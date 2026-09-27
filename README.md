@@ -83,4 +83,4 @@ streamlit run app.py
 ```
 
 ## Live demo
-(add your deployed Streamlit Community Cloud link here)
+https://resume-matcher-app-7fhwq4skdayg6kyhab6ang.streamlit.app/
