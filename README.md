@@ -42,13 +42,28 @@ Sales, Designer, etc.), used to train the category classifier.
    score, skill gaps, and predicted category in one view.
 
 ## Results
-*(fill in your actual numbers after running `eda_and_modeling.py`)*
 
 | Model | Accuracy | Weighted F1 |
 |---|---|---|
-| Multinomial Naive Bayes | — | — |
-| Logistic Regression | — | — |
-| Linear SVM | — | — |
+| Multinomial Naive Bayes | 56.5% | 0.531 |
+| Logistic Regression | 66.8% | 0.652 |
+| **Linear SVM** | **74.0%** | **0.733** |
+
+**Best model: Linear SVM**, correctly classifying resumes across **24
+distinct job categories** — a much harder task than binary
+classification, since categories like Designer/Digital-Media or
+Sales/Business-Development genuinely overlap in vocabulary.
+
+**Standout categories:** Information-Technology (100% recall, 80%
+precision), Designer (93% F1), HR (89% F1) — these have distinctive,
+consistent vocabulary that TF-IDF captures well.
+
+**Weakest category: BPO** (0% precision/recall) — with only 4 samples
+in the entire dataset, there wasn't enough data for the model to learn
+this category at all. This is a real limitation worth naming rather
+than hiding: **class imbalance in small categories** is the main
+failure mode here, and would need either more BPO-labeled resumes or
+merging it into a related category to fix.
 
 ## What I'd improve with more time
 - Replace the curated skill list with a trained NER model for skill
